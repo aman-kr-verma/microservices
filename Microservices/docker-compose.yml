@@ -1,0 +1,80 @@
+version: '1'
+services:
+  service-registry:
+    build: ./service-registry
+    ports:
+      - 8761:8761
+    networks:
+      - my-network
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - 8084:8084
+    networks:
+      - my-network
+    depends_on:
+      - service-registry
+  user-service:
+    build: ./user-service
+    ports:
+      - 8081:8081
+    networks:
+      - my-network
+    depends_on:
+      - service-registry
+      - mysql1
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysql1:3306/microservices
+  hotel-service:
+    build: ./hotel-service
+    ports:
+      - 8082:8082
+    networks:
+      - my-network
+    depends_on:
+      - service-registry
+      - mysql2
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysql2:3306/micro_hotel
+  rating_service:
+    build: ./rating_service
+    ports:
+      - 8083:8083
+    networks:
+      - my-network
+    depends_on:
+      - service-registry
+      - mysql3
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysql3:3306/micro_rating
+  mysql1:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=master
+      - MYSQL_DATABASE=microservices
+    networks:
+      - my-network
+    volumes:
+      - ./mysql1:/var/lib/mysql:delegated
+  mysql2:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=master
+      - MYSQL_DATABASE=micro_hotel
+    networks:
+      - my-network
+    volumes:
+      - ./mysql2:/var/lib/mysql:delegated
+  mysql3:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=master
+      - MYSQL_DATABASE=micro_rating
+    networks:
+      - my-network
+    volumes:
+      - ./mysql3:/var/lib/mysql:delegated
+
+networks:
+  my-network:
+    driver: bridge
