@@ -1,13 +1,13 @@
 version: '1'
 services:
   service-registry:
-    build: ./service-registry
+    build: ./ServiceRegistry
     ports:
       - 8761:8761
     networks:
       - my-network
   api-gateway:
-    build: ./api-gateway
+    build: ./ApiGateway
     ports:
       - 8084:8084
     networks:
@@ -15,7 +15,7 @@ services:
     depends_on:
       - service-registry
   user-service:
-    build: ./user-service
+    build: ./UserService
     ports:
       - 8081:8081
     networks:
@@ -26,7 +26,7 @@ services:
     environment:
       - spring.datasource.url=jdbc:mysql://mysql1:3306/microservices
   hotel-service:
-    build: ./hotel-service
+    build: ./HotelService
     ports:
       - 8082:8082
     networks:
@@ -37,7 +37,7 @@ services:
     environment:
       - spring.datasource.url=jdbc:mysql://mysql2:3306/micro_hotel
   rating_service:
-    build: ./rating_service
+    build: ./RatingService
     ports:
       - 8083:8083
     networks:
