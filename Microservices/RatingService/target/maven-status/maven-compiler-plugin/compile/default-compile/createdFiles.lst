@@ -1,0 +1,8 @@
+com\rating\service\RatingService.class
+com\rating\exception\GlobalExceptionHandler.class
+com\rating\service\impl\RatingServiceImpl.class
+com\rating\exception\ResurceNotFoundException.class
+com\rating\RatingServiceApplication.class
+com\rating\controller\RatingController.class
+com\rating\repository\RatingRepository.class
+com\rating\entity\Rating.class

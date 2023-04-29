@@ -1,0 +1,4 @@
+com\apigateway\ApiGatewayApplication.class
+com\apigateway\controller\AuthController.class
+com\apigateway\config\SecurityConfig.class
+com\apigateway\model\AuthResponse.class
