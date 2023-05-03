@@ -15,7 +15,7 @@ services:
     depends_on:
       - service-registry
     environment:
-      -db_url=service-reg-container
+      - db_url = service-reg-container
   user-service:
     build: ./UserService
     ports:
@@ -26,7 +26,7 @@ services:
       - service-registry
       - mysql1
     environment:
-      - db_url=jdbc:mysql://mysql1:3306/microservices
+      - db_url = jdbc:mysql://mysql1:3306/microservices
       - db_username = root
       - db_password = master
       - db_host = service-reg-container
@@ -40,7 +40,7 @@ services:
       - service-registry
       - mysql2
     environment:
-      - db_url=jdbc:mysql://mysql2:3306/micro_hotel
+      - db_url = jdbc:mysql://mysql2:3306/micro_hotel
       - db_username = root
       - db_password = master
       - db_host = service-reg-container
@@ -54,7 +54,7 @@ services:
       - service-registry
       - mysql3
     environment:
-      - db_url=jdbc:mysql://mysql3:3306/micro_rating
+      - db_url = jdbc:mysql://mysql3:3306/micro_rating
       - db_username = root
       - db_password = master
       - db_host = service-reg-container
