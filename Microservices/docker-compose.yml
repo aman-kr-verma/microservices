@@ -25,6 +25,8 @@ services:
       - mysql1
     environment:
       - spring.datasource.url=jdbc:mysql://mysql1:3306/microservices
+      - spring.datasource.username = root
+      - spring.datasource.password = master
   hotel-service:
     build: ./HotelService
     ports:
@@ -36,6 +38,8 @@ services:
       - mysql2
     environment:
       - spring.datasource.url=jdbc:mysql://mysql2:3306/micro_hotel
+      - spring.datasource.username = root
+      - spring.datasource.password = master
   rating_service:
     build: ./RatingService
     ports:
@@ -47,11 +51,15 @@ services:
       - mysql3
     environment:
       - spring.datasource.url=jdbc:mysql://mysql3:3306/micro_rating
+      - spring.datasource.username = root
+      - spring.datasource.password = master
   mysql1:
     image: mysql:8.0
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=microservices
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=master
     networks:
       - my-network
     volumes:
@@ -61,6 +69,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=micro_hotel
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=master
     networks:
       - my-network
     volumes:
@@ -70,6 +80,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=micro_rating
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=master
     networks:
       - my-network
     volumes:
