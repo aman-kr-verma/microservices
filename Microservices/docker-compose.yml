@@ -58,7 +58,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=microservices
-      - MYSQL_USER=root
       - MYSQL_PASSWORD=master
     networks:
       - my-network
@@ -69,7 +68,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=micro_hotel
-      - MYSQL_USER=root
       - MYSQL_PASSWORD=master
     networks:
       - my-network
@@ -80,7 +78,6 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=micro_rating
-      - MYSQL_USER=root
       - MYSQL_PASSWORD=master
     networks:
       - my-network
