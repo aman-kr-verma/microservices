@@ -15,7 +15,7 @@ services:
     depends_on:
       - service-registry
     environment:
-      - db_url = service-reg-container
+      - db_host = service-reg-container
   user-service:
     build: ./UserService
     ports:
@@ -62,6 +62,7 @@ services:
     image: mysql:8.0
     environment:
       - MYSQL_ROOT_PASSWORD=master
+      - MYSQL_USER=root
       - MYSQL_DATABASE=microservices
       - MYSQL_PASSWORD=master
     networks:
@@ -72,6 +73,7 @@ services:
     image: mysql:8.0
     environment:
       - MYSQL_ROOT_PASSWORD=master
+      - MYSQL_USER=root
       - MYSQL_DATABASE=micro_hotel
       - MYSQL_PASSWORD=master
     networks:
@@ -82,6 +84,7 @@ services:
     image: mysql:8.0
     environment:
       - MYSQL_ROOT_PASSWORD=master
+      - MYSQL_USER=root
       - MYSQL_DATABASE=micro_rating
       - MYSQL_PASSWORD=master
     networks:

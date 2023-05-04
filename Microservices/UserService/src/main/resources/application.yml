@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${db_url:jdbc:mysql://localhost:3306/microservices}
-    username: ${db_username:root}
-    password: ${db_password:master}
+    url: ${db_url}
+    username: ${db_username}
+    password: ${db_password}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
@@ -25,5 +25,5 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://${db_host:localhost}:8761/eureka
+      defaultZone: http://${db_host}:8761/eureka
 

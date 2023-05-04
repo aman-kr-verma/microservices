@@ -2,7 +2,7 @@ server:
   port: 8761
 eureka:
   instance:
-    hostname: ${db_host:localhost}
+    hostname: ${db_host}
   client:
     register-with-eureka: false
     fetch-registry: false
