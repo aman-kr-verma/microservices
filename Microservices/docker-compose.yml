@@ -69,8 +69,8 @@ services:
     image: mysql:8.0
     container_name: mysql1
     environment:
-      - MYSQL_ROOT_PASSWORD=master
-      - MYSQL_DATABASE=microservices
+        MYSQL_ROOT_PASSWORD: master
+        MYSQL_DATABASE: microservices
     networks:
       - my-network
     ports:
@@ -81,8 +81,8 @@ services:
     image: mysql:8.0
     container_name: mysql2
     environment:
-      - MYSQL_ROOT_PASSWORD=master
-      - MYSQL_DATABASE=micro_hotel
+        MYSQL_ROOT_PASSWORD: master
+        MYSQL_DATABASE: micro_hotel
     ports:
       - 3307:3306
     networks:
@@ -93,8 +93,8 @@ services:
     image: mysql:8.0
     container_name: mysql3
     environment:
-      - MYSQL_ROOT_PASSWORD=master
-      - MYSQL_DATABASE=micro_rating
+        MYSQL_ROOT_PASSWORD: master
+        MYSQL_DATABASE: micro_rating
     ports:
       - 3308:3306
     networks:
