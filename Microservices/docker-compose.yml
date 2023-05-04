@@ -8,7 +8,7 @@ services:
     networks:
       - my-network
     environment:
-      - db_host = service-reg-container
+      - eureka.instance.hostname = service-reg-container
   api-gateway:
     build: ./ApiGateway
     container_name: api-gateway-container
@@ -19,7 +19,7 @@ services:
     depends_on:
       - service-registry
     environment:
-      - db_host = service-reg-container
+      - eureka.client.service-url.defaultZone = http://service-reg-container:8761/eureka
   user-service:
     build: ./UserService
     container_name: user-service-container
@@ -31,10 +31,10 @@ services:
       - service-registry
       - mysql1
     environment:
-      - db_url = jdbc:mysql://mysql1:3306/microservices
-      - db_username = root
-      - db_password = master
-      - db_host = service-reg-container
+      - spring.datasource.url = jdbc:mysql://mysql1:3306/microservices
+      - spring.datasource.username = root
+      - spring.datasource.password = master
+      - eureka.client.service-url.defaultZone = http://service-reg-container:8761/eureka
   hotel-service:
     build: ./HotelService
     container_name: hotel-service-container
@@ -46,10 +46,10 @@ services:
       - service-registry
       - mysql2
     environment:
-      - db_url = jdbc:mysql://mysql2:3306/micro_hotel
-      - db_username = root
-      - db_password = master
-      - db_host = service-reg-container
+      - spring.datasource.url = jdbc:mysql://mysql2:3306/micro_hotel
+      - spring.datasource.username = root
+      - spring.datasource.password = master
+      - eureka.client.service-url.defaultZone = http://service-reg-container:8761/eureka
   rating_service:
     build: ./RatingService
     container_name: rating-service-container
@@ -61,10 +61,10 @@ services:
       - service-registry
       - mysql3
     environment:
-      - db_url = jdbc:mysql://mysql3:3306/micro_rating
-      - db_username = root
-      - db_password = master
-      - db_host = service-reg-container
+      - spring.datasource.url = jdbc:mysql://mysql3:3306/micro_rating
+      - spring.datasource.username = root
+      - spring.datasource.password = master
+      - eureka.client.service-url.defaultZone = http://service-reg-container:8761/eureka
   mysql1:
     image: mysql:8.0
     container_name: mysql1
