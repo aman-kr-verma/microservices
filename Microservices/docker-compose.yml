@@ -62,9 +62,7 @@ services:
     image: mysql:8.0
     environment:
       - MYSQL_ROOT_PASSWORD=master
-      - MYSQL_USER=root
       - MYSQL_DATABASE=microservices
-      - MYSQL_PASSWORD=master
     networks:
       - my-network
     volumes:
@@ -73,9 +71,7 @@ services:
     image: mysql:8.0
     environment:
       - MYSQL_ROOT_PASSWORD=master
-      - MYSQL_USER=root
       - MYSQL_DATABASE=micro_hotel
-      - MYSQL_PASSWORD=master
     networks:
       - my-network
     volumes:
@@ -84,9 +80,7 @@ services:
     image: mysql:8.0
     environment:
       - MYSQL_ROOT_PASSWORD=master
-      - MYSQL_USER=root
       - MYSQL_DATABASE=micro_rating
-      - MYSQL_PASSWORD=master
     networks:
       - my-network
     volumes:
