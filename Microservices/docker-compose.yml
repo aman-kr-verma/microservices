@@ -2,12 +2,16 @@ version: '1'
 services:
   service-registry:
     build: ./ServiceRegistry
+    container_name: service-reg-container
     ports:
       - 8761:8761
     networks:
       - my-network
+    environment:
+      - db_host = service-reg-container
   api-gateway:
     build: ./ApiGateway
+    container_name: api-gateway-container
     ports:
       - 8084:8084
     networks:
@@ -18,6 +22,7 @@ services:
       - db_host = service-reg-container
   user-service:
     build: ./UserService
+    container_name: user-service-container
     ports:
       - 8081:8081
     networks:
@@ -32,6 +37,7 @@ services:
       - db_host = service-reg-container
   hotel-service:
     build: ./HotelService
+    container_name: hotel-service-container
     ports:
       - 8082:8082
     networks:
@@ -46,6 +52,7 @@ services:
       - db_host = service-reg-container
   rating_service:
     build: ./RatingService
+    container_name: user-service-container
     ports:
       - 8083:8083
     networks:
@@ -60,6 +67,7 @@ services:
       - db_host = service-reg-container
   mysql1:
     image: mysql:8.0
+    container_name: mysql1
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=microservices
@@ -69,6 +77,7 @@ services:
       - ./mysql1:/var/lib/mysql:delegated
   mysql2:
     image: mysql:8.0
+    container_name: mysql2
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=micro_hotel
@@ -78,6 +87,7 @@ services:
       - ./mysql2:/var/lib/mysql:delegated
   mysql3:
     image: mysql:8.0
+    container_name: mysql3
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=micro_rating
