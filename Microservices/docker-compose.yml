@@ -73,6 +73,8 @@ services:
       - MYSQL_DATABASE=microservices
     networks:
       - my-network
+    ports:
+      - 3306:3306
     volumes:
       - ./mysql1:/var/lib/mysql:delegated
   mysql2:
@@ -81,6 +83,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=micro_hotel
+    ports:
+      - 3307:3306
     networks:
       - my-network
     volumes:
@@ -91,6 +95,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=master
       - MYSQL_DATABASE=micro_rating
+    ports:
+      - 3308:3306
     networks:
       - my-network
     volumes:
