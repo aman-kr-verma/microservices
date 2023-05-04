@@ -52,7 +52,7 @@ services:
       - db_host = service-reg-container
   rating_service:
     build: ./RatingService
-    container_name: user-service-container
+    container_name: rating-service-container
     ports:
       - 8083:8083
     networks:
